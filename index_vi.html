@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>game</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<script type = "module" src = "./index_vi.js"></script>
+<body class = "oofanimate">
+    <div class="insert">
+        <input type="text" id="inputt" class="inp" placeholder="nhập từ vào đây">
+        <button id = "btn">🤜</button>
+        <div class = "piss">
+            <div class="health-bar" id="health-bar"></div>
+            <p class="health-text" id="health-text">0</p>
+        </div>
+        <div class="exp">
+            <div class="exp-bar" id="exp-bar"></div>
+            <p class="exp-text" id="exp-text"></p>
+        </div>
+        <a href="/index.html" class="button">đổi ngôn ngữ sang tiếng anh</a>
+    </div>
+    <div class = "pisss">
+        <p id="notif">nhập từ tiếng anh để đánh. những từ chỉ được phép dùng một lần trong mỗi trận.</p>
+        <div class="health">
+            <div class="enemy-health-bar" id="enemy-health-bar"></div>
+            <p class="enemy-health-text" id="enemy-health-text">0</p>
+        </div>
+        <p id = "enemystats"></p> 
+        <p id = "wincounter"></p>
+    </div>
+    <button id = "save" class = "save"></button>
+    <p id = "enemystats"></p>
+    <audio>
+        <source src="hitHurt.wav" type="audio/wav" id="hit">
+        <source src="explosion.wav" type="audio/wav" id="kill">
+        <source src="powerUp.wav" type="audio/wav" id="special">
+        <source src="synth.wav" type="audio/wav" id="death">
+    </audio>
+</body>
+</html>

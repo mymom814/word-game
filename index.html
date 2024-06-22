@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>word game</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<script type = "module" src = "./index.js"></script>
+<body class = "oofanimate">
+    <div class="insert">
+        <input type="text" id="inputt" class="inp">
+        <button id = "btn">🤜</button>
+        <div class = "piss">
+            <div class="health-bar" id="health-bar"></div>
+            <p class="health-text" id="health-text">0</p>
+        </div>
+        <div class="exp">
+            <div class="exp-bar" id="exp-bar"></div>
+            <p class="exp-text" id="exp-text"></p>
+        </div>
+        <a href="/index_vi.html" class="button">switch language to vietnamese</a>
+    </div>
+    <div class = "pisss">
+        <p id="notif">type words to attack the enemy. words can only be used ONCE in every battle.</p>
+        <div class="health">
+            <div class="enemy-health-bar" id="enemy-health-bar"></div>
+            <p class="enemy-health-text" id="enemy-health-text">0</p>
+        </div>
+        <p id = "enemystats"></p> 
+        <p id = "special", class = "special"></p>
+        <p id = "wincounter">wins:</p>
+    </div>
+    <button id = "save" class="save"></button>
+    <audio>
+        <source src="hitHurt.wav" type="audio/wav" id="hit">
+        <source src="explosion.wav" type="audio/wav" id="kill">
+        <source src="powerUp.wav" type="audio/wav" id="special">
+        <source src="synth.wav" type="audio/wav" id="death">
+    </audio>
+</body>
+</html>
