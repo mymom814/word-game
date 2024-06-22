@@ -31,7 +31,7 @@ setInterval(() => {
     else {
         window.removeEventListener("beforeunload", beforeUnloadHandler);
     }
-}, 20);
+}, 70);
 document.addEventListener("DOMContentLoaded", () => document.body.className = "")
 if (localStorage.getItem("wins") != null) {
     wins = parseInt(localStorage.getItem("wins"));
@@ -48,7 +48,7 @@ let cehp = ehp;
 setInterval(function() {
     chp = lerp(hp, chp);
     document.getElementById("health-bar").style.width = (400 * (chp / maxhp)).toString() + "px"
-}, 40);
+}, 70);
 randomNumber = Math.max(Math.floor(Math.random() * (lv / 5)), 5);
 if (lv >= 5) {
     randomize();
@@ -152,7 +152,7 @@ let interval2;
 interval2 = setInterval(function() {
     cehp = lerp(ehp, cehp);
     document.getElementById("enemy-health-bar").style.width = (400 * (cehp / maxehp)).toString() + "px"
-}, 40);
+}, 70);
 function newEnemy() {
     randomNumber = Math.max(Math.floor(Math.random() * (lv / 5)), 5);
     if (lv >= 5) {

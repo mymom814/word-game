@@ -45,7 +45,7 @@ randomNumber = Math.max(Math.floor(Math.random() * (lv / 5)), 5);
 setInterval(function() {
     chp = lerp(hp, chp);
     document.getElementById("health-bar").style.width = (400 * (chp / maxhp)).toString() + "px"
-}, 40);
+}, 70);
 if (lv >= 5) {
     randomize();
     document.getElementById("special").innerHTML = "các chữ cái đặc biệt(đánh mạnh hơn 1,25 lần): ";
@@ -156,7 +156,7 @@ let interval2;
 interval2 = setInterval(function() {
     cehp = lerp(ehp, cehp);
     document.getElementById("enemy-health-bar").style.width = (400 * (cehp / maxehp)).toString() + "px"
-}, 40);
+}, 70);
 function newEnemy() {
     randomNumber = Math.max(Math.floor(Math.random() * (lv / 5)), 5);
     if (lv >= 5) {
