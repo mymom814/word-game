@@ -123,7 +123,7 @@ function findword()
             exprequired += 100;
         }
         document.getElementById("wincounter").innerHTML = "wins: " + JSON.stringify(wins);
-        document.getElementById("exp-bar").style.width = (400 * (exp / exprequired)).toString() + "px"
+        document.getElementById("exp-bar").style.width = (300 * (exp / exprequired)).toString() + "px"
         document.getElementById("exp-text").innerHTML = JSON.stringify(exp) + "/" + JSON.stringify(exprequired) + " | Lv." + lv.toString()
         let timeout = setTimeout(newEnemy, 1500);
         map = new Map();
@@ -140,7 +140,7 @@ function findword()
         map = new Map();
     }
     document.getElementById("health-text").innerHTML = (hp * 10).toString() + " HP"
-    document.getElementById("enemy-health-text").innerHTML = (ehp / maxehp * 100).toString() + "%"
+    document.getElementById("enemy-health-text").innerHTML = Math.floor(ehp / maxehp * 100).toString() + "%"
 }
 function save() {
     localStorage.setItem("wins", JSON.stringify(wins));
