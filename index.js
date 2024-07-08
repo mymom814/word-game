@@ -1,5 +1,6 @@
 //import obj from './dictionart/words_dictionary.json' assert {type: 'json'}
 let obj;
+let atk = true;
 fetch ("./dictionart/words_dictionary.json", 
     {method: 'GET',
     headers: {
@@ -48,7 +49,7 @@ let cehp = ehp;
 setInterval(function() {
     chp = lerp(hp, chp);
     document.getElementById("health-bar").style.width = (400 * (chp / maxhp)).toString() + "px"
-}, 70);
+}, 40);
 randomNumber = Math.max(Math.floor(Math.random() * (lv / 5)), 5);
 if (lv >= 5) {
     randomize();
@@ -107,6 +108,7 @@ function findword()
     }
     hp = hp - 1;
     if (ehp <= 0) {
+        atk = false;
         var aexp = new Audio("explosion.wav");
         aexp.play();
         document.getElementById("btn").disabled = true;
@@ -118,7 +120,7 @@ function findword()
         if (exp >= exprequired) {
             exp -= exprequired;
             lv++;
-            document.getElementById("lv").innerHTML = "lv" + lv.toString();
+            document.getElementById("exp-text").innerHTML = JSON.stringify(exp) + "/" + JSON.stringify(exprequired) + " | Lv." + lv.toString()
             maxhp = lv * 10;
             exprequired += 100;
         }
@@ -129,6 +131,7 @@ function findword()
         map = new Map();
     }
     else if (hp <= 0) {
+        atk = false;
         var asynth = new Audio("synth.wav")
         asynth.play();
         document.body.classList.remove("oofanimate");
@@ -152,8 +155,9 @@ let interval2;
 interval2 = setInterval(function() {
     cehp = lerp(ehp, cehp);
     document.getElementById("enemy-health-bar").style.width = (400 * (cehp / maxehp)).toString() + "px"
-}, 70);
+}, 40);
 function newEnemy() {
+    atk = true;
     randomNumber = Math.max(Math.floor(Math.random() * (lv / 5)), 5);
     if (lv >= 5) {
         document.getElementById("special").innerHTML = "special letters: ";
@@ -166,7 +170,7 @@ function newEnemy() {
         document.getElementById("special").innerHTML += String(randomLetters[count]);
     }
     document.getElementById("btn").disabled = false;
-    elv = Math.floor(Math.random() * wins + 1);
+    elv = Math.floor(Math.random() * wins - 69) + 70;
     maxehp = elv * 10;
     ehp = elv * 10;
     hp = maxhp;
@@ -195,7 +199,7 @@ document.getElementById("btn").onclick = function(){findword()}
 document.getElementById("save").onclick = function(){save()}
 var input = document.getElementById("inputt");
 input.addEventListener("keydown", function(event) {
-    if (event.key == "Enter") {
+    if (event.key == "Enter" && atk) {
         event.preventDefault();
         findword();
     }

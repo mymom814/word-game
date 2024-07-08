@@ -1,4 +1,5 @@
 let obj;
+let atk = true;
 fetch ("./dictionart/words_dictionary.json", 
     {method: 'GET',
     headers: {
@@ -45,7 +46,7 @@ randomNumber = Math.max(Math.floor(Math.random() * (lv / 5)), 5);
 setInterval(function() {
     chp = lerp(hp, chp);
     document.getElementById("health-bar").style.width = (400 * (chp / maxhp)).toString() + "px"
-}, 70);
+}, 40);
 if (lv >= 5) {
     randomize();
     document.getElementById("special").innerHTML = "các chữ cái đặc biệt(đánh mạnh hơn 1,25 lần): ";
@@ -106,6 +107,7 @@ function findword()
     }
     hp = hp - 1;
     if (ehp <= 0) {
+        atk = false;
         var aexp = new Audio("explosion.wav");
         aexp.play();
         document.getElementById("btn").disabled = true;
@@ -120,7 +122,6 @@ function findword()
             hp = maxhp;
             document.getElementById("exp-text").innerHTML = JSON.stringify(exp) + "/" + JSON.stringify(exprequired) + " | Lv." + lv.toString()
         }
-        
         document.getElementById("wincounter").innerHTML = "số lần thắng: " + JSON.stringify(wins);
         document.getElementById("exp-bar").style.width = (400 * (exp / exprequired)).toString() + "px"
         document.getElementById("exp-text").innerHTML = JSON.stringify(exp) + "/" + JSON.stringify(exprequired) + " | Lv." + lv.toString()
@@ -130,6 +131,7 @@ function findword()
         console.log(exp)
     }
     if (hp <= 0) {
+        atk = false;
         var asynth = new Audio("synth.wav")
         asynth.play();
         document.body.classList.remove("oofanimate");
@@ -158,6 +160,7 @@ interval2 = setInterval(function() {
     document.getElementById("enemy-health-bar").style.width = (400 * (cehp / maxehp)).toString() + "px"
 }, 70);
 function newEnemy() {
+    atk = true;
     randomNumber = Math.max(Math.floor(Math.random() * (lv / 5)), 5);
     if (lv >= 5) {
         randomize();
@@ -190,7 +193,7 @@ document.getElementById("btn").onclick = function(){findword()}
 document.getElementById("save").onclick = function(){save()}
 var input = document.getElementById("inputt");
 input.addEventListener("keydown", function(event) {
-    if (event.key == "Enter") {
+    if (event.key == "Enter" && atk) {
         event.preventDefault();
         findword();
     }
